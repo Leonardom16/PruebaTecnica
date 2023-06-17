@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class = "row">
+        <div class = "col-lg-8 offset-lg-2">
+            <div class="card-body text-center">
+                <h3>Personas</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class = "col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5>{{accion}} Persona/s</h5>
+                        <form [formGroup]="form" (ngSubmit)="GuardarPersona()">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"></span>
+                                <input formControlName="Nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
+                              </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"></span>
+                                <input formControlName="Direccion" type="text" class="form-control" placeholder="Direccion" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"></span>
+                                <input formControlName="Telefono" type="text" maxlenght="10" class="form-control" placeholder="Telefono" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                          
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"></span>
+                                <input formControlName="CURP" type="text" class="form-control" placeholder="CURP" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <button type="submit" class="btn btn-success btn lg">Aceptar</button>
+                            <input type="file" (change)="onFileSelected($event)">
+                            <button (click)="onUpload()">Subir CSV</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class = "col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <input type="text" id="Input" onkeyup="myFunction()" placeholder="Buscar...">
+                    <h5>Lista de Personas</h5>
+                        <table class ="table" id ="table">
+                            <tbody>
+                                <tr *ngFor="let Persona of listPersonas; let i = index">
+
+                                    <td>{{Persona.nombre}}</td>
+                                    <td>{{Persona.direccion}}</td>
+                                    <td>{{Persona.telefono}}</td>
+                                    <td>{{Persona.fecha}}</td>
+                                    <td>{{Persona.curp}}</td>
+                                    <td>
+                                        <i (click)="EditarPersonas(Persona)" class = "far fa-edit"></i>
+                                    </td>
+                                    <td>
+                                        <i (click)="eliminarPersona(Persona.id)" class = "far fa-trash-alt text-danger"></i> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>    
